@@ -21,7 +21,7 @@ class SignUp extends Component {
         this.uploadImage = this.uploadImage.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.deleteLastImage = this.deleteLastImage.bind(this);
-        this.handleSignUp = this.handleSignUp.bind(this);
+        // this.handleSignUp = this.handleSignUp.bind(this);
     }
     // ##################################################################
     handleChange(e) {
@@ -120,7 +120,7 @@ class SignUp extends Component {
                             </form>
                             {/* the Forms */}
                             <form className="forms-container"
-                                onSubmit={this.handleSignUp}
+                            // onSubmit={this.handleSignUp}
                             >
                                 <div className="container-for-profilePicture-container">
 

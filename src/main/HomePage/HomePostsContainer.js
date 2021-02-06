@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from "react";
 import TopResponse from '../Style/images/top-response.svg';
 import { myGetFetcher } from "../MyFetchers";
-
-
+import { Link } from "react-router-dom";
 
 
 
@@ -42,16 +41,12 @@ class HomePostsContainer extends Component {
                     PostTitle={post.postTitle}
                     PostBody={post.postBody}
                     PostDate={post.postDate}
-
                 />)
         })
-
         this.setState({
             AllPostComponents: postComponent
         })
         console.log(this.state.AllPostComponents)
-
-
     }
 
 
@@ -60,6 +55,8 @@ class HomePostsContainer extends Component {
         return (
             <Fragment>
                 <div id="home-posts-container">
+                    <Link id="go-to-creat-post-link" to="/Creat-new-post">
+                    </Link>
                     {this.state.AllPostComponents}
                 </div>
             </Fragment>
@@ -72,12 +69,12 @@ class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
     }
     render() {
         return (
             <Fragment>
+
                 <div className="post-container-for-positon">
                     <div className='the-post-container'>
                         <div className="post-author-container">

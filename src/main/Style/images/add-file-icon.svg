@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="62.365" height="49.415" viewBox="0 0 62.365 49.415">
+  <defs>
+    <filter id="Path_121" x="19.554" y="4.901" width="21" height="42.527" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.271"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Line_37" x="8.79" y="15.665" width="42.527" height="21" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.271"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_122" x="0" y="0" width="62.365" height="49.415" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-3"/>
+      <feFlood flood-opacity="0.271"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_121)">
+    <path id="Path_121-2" data-name="Path 121" d="M0,0V21.527" transform="translate(33.05 15.4)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Line_37)">
+    <line id="Line_37-2" data-name="Line 37" y2="21.527" transform="translate(43.82 26.16) rotate(90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_122)">
+    <path id="Path_122-2" data-name="Path 122" d="M1955.016,1630.708h27.063l3.778,5.345h19.525v32.07h-50.365Z" transform="translate(-1946.02 -1624.71)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  </g>
+</svg>

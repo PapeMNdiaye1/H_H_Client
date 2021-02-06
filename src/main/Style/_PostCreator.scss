@@ -58,7 +58,7 @@
                 width: 100%;
                 min-height: 30em;
                 background-color: var(--colorY);
-                // background-image: url("./images/photo-Bg.svg");
+                background-image: url("./images/photo-Bg.svg");
                 background-position: center;
                 background-size: 9%;
                 background-repeat: no-repeat;
@@ -69,8 +69,8 @@
                     position: absolute;
                     bottom: 0.25em;
                     right: 0.51em;
-                    background: salmon;
-                    // background-image: url("./images/add-file-icon.svg");
+                    // background: salmon;
+                    background-image: url("./images/add-file-icon.svg");
                     background-size: 100%;
                     background-position: center;
                     background-repeat: no-repeat;

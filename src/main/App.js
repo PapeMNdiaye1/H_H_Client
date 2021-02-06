@@ -5,7 +5,7 @@ import Login from "./UsersControllers/Login";
 import HomePostsContainer from "./HomePage/HomePostsContainer";
 import PostCreator from "./HomePage/PostCreator";
 import { myGetFetcher } from "./MyFetchers";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -50,15 +50,13 @@ class App extends Component {
       return (
         <div id="home_page_container">
           <BrowserRouter>
-            <Redirect to={"/creat-new-post"} />
-            <TopBar />
-            <Mune />
             <Redirect to={"/Home"} />
-            {/* <Redirect to={"/creat-new-post"} /> */}
+            <Mune />
+            <TopBar />
             <Switch>
               <Route
                 exact
-                path={"/creat-new-post"}
+                path={"/Creat-new-post"}
                 render={(props) => (
                   <PostCreator
                     {...props}
@@ -144,7 +142,6 @@ class TopBar extends Component {
     return (
       <BrowserRouter>
         <div className="top-bar-container">
-
         </div>
       </BrowserRouter>);
   }
@@ -154,40 +151,52 @@ class Mune extends Component {
   constructor(props) {
     super(props);
     this.sendPost = this.sendPost.bind(this)
+    this.goToCreatPost = this.goToCreatPost.bind(this)
   }
 
   sendPost = () => {
     document.querySelector('.hidden-post-send').click()
   }
+  goToCreatPost = () => {
+    let link = document.querySelector('#go-to-creat-post-link')
+    if (link) {
+      link.click()
+      document.querySelector('.menu-for-post-creation-background').style.display = 'flex';
+      document.querySelector('.menu-home-background').style.display = 'none';
+    }
+  }
 
   render() {
     return (
       <BrowserRouter>
-        <div id="menu-container-for-post-creation">
-          <div className="menu-for-post-creation">
-            <div className="go-to-profile-page">
+        <div id="menu-container">
+          <div className="menu-for-post-creation-background">
 
+            <div className="menu-for-post-creation">
+              <div className="go-to-profile-page">
+              </div>
+              <div className="send-post"
+                onClick={this.sendPost}
+              >
+                Send
+            </div >
             </div>
-            <div className="send-post"
-              onClick={this.sendPost}
-            >
-              Send
-            </div >
           </div>
-          <div className="menu-container-for-home">
-            <div className="go-to-profile-page">
+
+          <div className='menu-home-background'>
+            <div className="menu-container-for-home">
+              <div className="go-to-profile-page">
+              </div>
+              <div className="go-to-creat-post"
+                onClick={this.goToCreatPost}
+              >
+              </div >
+              <div className="go-on-top"
+              >
+              </div >
             </div>
-            <div className="send-post"
-              onClick={this.sendPost}
-            >
-              Send
-            </div >
-            <div className="send-post"
-              onClick={this.sendPost}
-            >
-              Send
-            </div >
           </div>
+
         </div>
       </BrowserRouter>);
   }
