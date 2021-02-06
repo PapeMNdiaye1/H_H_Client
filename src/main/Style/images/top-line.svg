@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="397.68" height="158.804" viewBox="0 0 397.68 158.804">
+  <defs>
+    <filter id="Tracé_77" x="19.065" y="16" width="249.603" height="98.793" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="red" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Tracé_81" x="0" y="0" width="199.668" height="158.804" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-color="red" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Tracé_79" x="42" y="3.583" width="355.68" height="68.212" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-color="red" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_77)">
+    <path id="Tracé_77-2" data-name="Tracé 77" d="M-1476.455,2289.819l39.921-77.793h187.747l-21.72,43.127" transform="translate(-1218.29 2313.32) rotate(180)" fill="none" stroke="#f12222" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_81)">
+    <path id="Tracé_81-2" data-name="Tracé 81" d="M-1503.455,2349.819l66.921-137.793s57.708.678,111.747,0" transform="translate(-1314.29 2357.32) rotate(180)" fill="none" stroke="#f12222" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_79)">
+    <path id="Tracé_79-2" data-name="Tracé 79" d="M-1124.787,2212.026c-54.039.678-311.747,0-311.747,0l-22.933,47.211" transform="translate(-1072.29 2270.32) rotate(180)" fill="none" stroke="#f12222" stroke-linecap="round" stroke-width="3"/>
+  </g>
+</svg>

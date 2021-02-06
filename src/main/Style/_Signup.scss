@@ -1,0 +1,137 @@
+@mixin cent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUp-container {
+  width: 100vw;
+  height: 100vh;
+
+  .signUp-container-at-right {
+    position: absolute;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background-color: #acacac;
+    @include cent;
+
+    .signUp-box {
+      width: 30em;
+      height: 30em;
+      @include cent;
+      flex-wrap: wrap;
+      .fileInput {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+
+      .forms-container {
+        width: 100%;
+        height: 26em;
+        @include cent;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        // background: salmon;
+        .container-for-profilePicture-container {
+          width: 100%;
+          height: auto;
+          .profilePicture-container {
+            margin-left: 1.5em;
+            width: 7em;
+            height: 7em;
+            border: 0.1em gray solid;
+            background-position: center;
+            background-size: 105%;
+            background-position-x: -5%;
+            background-repeat: no-repeat;
+            border-radius: 0.2em;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+        .form-container {
+          width: 100%;
+          height: 4em;
+          @include cent;
+          div {
+            width: 90%;
+            height: 4em;
+            @include cent;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            .forms {
+              border-radius: 0.2em;
+              border: 0.1em gray solid;
+              background: transparent;
+              width: 100%;
+              height: 3em;
+            }
+          }
+        }
+        .form-container-last {
+          div {
+            width: 50%;
+            height: 4em;
+            @include cent;
+            label {
+              width: 80%;
+            }
+            .forms {
+              border: 0.1em gray solid;
+              background: var(--colorX);
+              width: 80%;
+              height: 3em;
+            }
+          }
+        }
+        .btn_container {
+          height: 4em;
+          width: 100%;
+          @include cent;
+          button {
+            cursor: pointer;
+            background-color: #000;
+            height: 3em;
+            width: 90%;
+            color: var(--colorX);
+            border: 0.5em #000 solid;
+            border-radius: 0.2em;
+            font-family: "Ubuntu", cursive;
+          }
+        }
+      }
+      .switch {
+        width: 100%;
+        // background-color: aqua;
+        @include cent();
+        button {
+          min-width: 5em;
+          color: var(--color0);
+          border: none;
+          font-family: "Ubuntu", cursive;
+          font-size: 1em;
+        }
+      }
+    }
+  }
+  .top-line {
+    width: 19em;
+    height: auto;
+    // background-color: #acacac;
+    position: absolute;
+    top: -1%;
+    left: -1%;
+  }
+  .bottom-line {
+    width: 40em;
+    height: auto;
+    position: absolute;
+    bottom: -2%;
+    right: 25.3%;
+  }
+}

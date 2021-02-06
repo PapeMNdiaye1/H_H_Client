@@ -1,0 +1,63 @@
+@mixin cent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#menu-container-for-post-creation {
+  width: 10em;
+  height: 25em;
+  background-color: salmon;
+  // background-image: url(./images/menu-border-for-post-creator.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: fixed;
+  right: 0.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  @include cent();
+  z-index: 1000;
+  .menu-for-post-creation,
+  .menu-container-for-home {
+    position: absolute;
+    left: 6%;
+    //   background: salmon;
+    width: 70%;
+    height: 60%;
+    //   opacity: .4;
+    @include cent();
+    flex-wrap: wrap;
+    div {
+      cursor: pointer;
+      width: 100%;
+      height: 4em;
+      color: var(--colorXX);
+      background-position: center;
+      background-repeat: no-repeat;
+      @include cent();
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    .go-to-profile-page {
+      // background-image: url(./images/profile-icon.svg);
+      background: darkcyan;
+    }
+    .send-post {
+      // background-image: url(./images/min-border.svg);
+      background: darkcyan;
+      background-size: 70%;
+
+      font-weight: 900;
+      //    &:hover{
+      //             transform: scale(1.1);
+      //         }
+    }
+  }
+  .menu-container-for-home {
+    display: none;
+    background-color: aqua;
+    opacity: 0.6;
+    height: 90%;
+  }
+}

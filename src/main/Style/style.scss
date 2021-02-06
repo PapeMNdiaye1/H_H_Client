@@ -1,0 +1,54 @@
+@font-face {
+  src: url(./Font/Ubuntu/Ubuntu-Regular.ttf);
+  font-family: Ubuntu;
+}
+@font-face {
+  src: url(./Font/Iceland/Iceland-Regular.ttf);
+  font-family: Iceland;
+}
+@mixin cent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  --color0: #e4e4e4;
+  --colorWhite: white;
+  --colorX: #acacac;
+  --colorXX: #f12222;
+  --colorText: #222;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background: var(--color0);
+  overflow: hidden;
+  font-family: Ubuntu;
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+.btn {
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(1);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+@import "./Signup";
+@import "./Login";
+@import "./HomePage";
+@import "./HomePostsContainer";
+@import "./Post";
+@import "./Menu";
+@import "./PostCreator";

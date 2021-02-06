@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="855.884" height="263.378" viewBox="0 0 855.884 263.378">
+  <defs>
+    <filter id="Tracé_91" x="540" y="0" width="231.666" height="263.378" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="red" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Tracé_93" x="199" y="82.998" width="655.666" height="164.38" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-color="red" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Tracé_92" x="0" y="83.161" width="855.884" height="177.217" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-color="red" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_91)">
+    <path id="Tracé_91-2" data-name="Tracé 91" d="M-1503.455,2454.4l117.714-242.378h92.952" transform="translate(2053.96 -2204.53)" fill="none" stroke="#f12222" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_93)">
+    <path id="Tracé_93-2" data-name="Tracé 93" d="M-819.789,2212.026c-95.055,1.193-565.952,0-565.952,0l-68.714,143.378" transform="translate(1663.96 -2121.53)" fill="none" stroke="#f12222" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_92)">
+    <path id="Tracé_92-2" data-name="Tracé 92" d="M-592.571,2137.187l-34.218,74.839h-758.952l-41.714,81.378" transform="translate(1437.96 -2046.53)" fill="none" stroke="#f12222" stroke-linecap="round" stroke-width="3"/>
+  </g>
+</svg>
