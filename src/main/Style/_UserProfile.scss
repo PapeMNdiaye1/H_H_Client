@@ -1,0 +1,79 @@
+@mixin cent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#user-profile-container{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 91vh;
+    overflow-y: scroll;
+    // background: salmon;
+    background:var(--color0);
+    @include cent();
+    align-items: flex-start;
+    .user-profile-infos-container{
+        width: 100%;
+        height: auto;
+        // background-color: aquamarine;
+        padding: 5em 0em 5em 5em;
+        .user-profile-infos{            
+            width: 80%;
+            min-height: 30em;
+            height: auto;
+            border: .1em #000 solid;
+            // background: salmon;
+            // background-image: url('./images/user-profile-bg.svg');
+            background-size: 100%;
+            background-position-y: 0%;
+            background-repeat: no-repeat;
+            // @include cent();
+            display: flex;
+            align-items:flex-start;
+            // justify-content: flex-start;
+            flex-wrap: wrap;
+            // margin-bottom: 5em;
+            .profile-picture-and-name-container{
+                width: 100%;
+                height: auto;
+                // background: sandybrown;
+                margin: 1em 0em 1em 0em;
+                @include cent();
+                justify-content: flex-start;
+                // background: saddlebrown;
+                .profile-picture{
+                    width: 4em;
+                    height: 4em;
+                    margin-left: 1em;
+                    border: 0.1em #000 solid;
+                    border-radius: 0.3em;
+                }
+                .user-name{
+                    margin-left: 1em;
+                    font-size: 1.2em;
+                }
+            }
+           .user-infos-container{
+                // background: sandybrown;
+                width: 100%;
+                height: auto;
+                min-height:30em;
+                display: grid;
+                grid-template-columns:  10fr 80%;
+                grid-template-rows: 
+                repeat(4 , )
+                4em
+                4em
+                4em
+                4em
+                10fr 
+                ;
+                .infos-title{
+                    background: sandybrown;
+                }
+              
+           }
+        }
+    }
+}
