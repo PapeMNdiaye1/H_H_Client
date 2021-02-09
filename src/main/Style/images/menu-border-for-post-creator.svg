@@ -15,9 +15,9 @@
       <feComposite in="SourceGraphic"/>
     </filter>
   </defs>
-  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_41)">
-    <path id="Path_41-2" data-name="Path 41" d="M1920,1451.91v367.338" transform="translate(-1774 -1443.91)" fill="none" stroke="#f12222" stroke-linecap="round" stroke-width="3"/>
-  </g>
+  <!-- <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_41)">
+    <path id="Path_41-2" data-name="Path 41" d="M1920,1451.91v367.338" transform="translate(-1774 -1443.91)" fill="none" stroke="#000"  display= "none" stroke-linecap="round" stroke-width="3"/>
+  </g> -->
   <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle_187)">
     <g id="Rectangle_187-2" data-name="Rectangle 187" transform="translate(10 83.5)" fill="none" stroke="#f12222" stroke-width="3">
       <rect width="107" height="215.248" rx="53.5" stroke="none"/>

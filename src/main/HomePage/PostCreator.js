@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Compressor from 'compressorjs';
 import _get from 'lodash.get';
 import { myPostFetcher } from '../MyFetchers'
+import { Link } from "react-router-dom";
 
 class PostCreator extends Component {
     constructor(props) {
@@ -9,18 +10,30 @@ class PostCreator extends Component {
         this.state = {
             PostTitle: "",
             PostBody: "",
-
-            // PostImage: 'https://cdn.mos.cms.futurecdn.net/MMwRCjVEaoJPP4dBBugWFY-1200-80.jpg',
+            PostImage: '',
             PostId: "",
+            SendPostBtnActive: false,
         };
         this.uploadImage = this.uploadImage.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.deleteLastImage = this.deleteLastImage.bind(this);
         this.handlePost = this.handlePost.bind(this);
-
+    }
+    // ##################################################################
+    componentDidMount() {
+        document.querySelector('.send-post').style.opacity = "";
+        document.querySelector('.menu-for-post-creation-background').style.display = 'flex';
+        document.querySelector('.menu-home-background').style.display = 'none';
+        document.querySelector('.post-creator-error-container').style.display = 'none';
+        document.querySelector('#post-creator-overlay').style.display = "none";
     }
     // ##################################################################
     async handlePost() {
+        document.querySelector('#post-creator-overlay').style.display = "flex";
+        document.querySelector('.send-post').style.opacity = "";
+        this.setState({
+            SendPostBtnActive: false
+        })
         let dt = new Date();
         let Now = `${(dt.getMonth() + 1)
             .toString()
@@ -46,21 +59,16 @@ class PostCreator extends Component {
             PostImageURL: PostImageTitle,
             PostImageID: PostImageId,
             PostDate: Now,
+            Timestamp: dt.getTime(),
         };
         // #####################
         let response = await myPostFetcher("/Posts/creat-posts", Data)
-        console.log(response.postIsCreated);
-        // #####################
-        // this.setState({
-        //     PostImage: "",
-        //     PostTitle: "",
-        //     PostDescription: "",
-        // });
-        // #####################
-        // document.querySelector("#creat_title").value = "";
-        // document.querySelector("#creat_description").value = "";
-        // this.props.onGetHome();
-        // document.querySelector(".goToHome").click();
+        if (response.postIsCreated) {
+            document.querySelector('#go-to-home-link').click()
+        } else {
+            document.querySelector('#post-creator-overlay').style.display = "none";
+            document.querySelector('.post-creator-error-container').style.display = 'flex';
+        }
     }
     // ##################################################################
     handleChange(e) {
@@ -69,6 +77,12 @@ class PostCreator extends Component {
         this.setState({
             [theFormName]: theFormValue.replace(/(\n)+/g, "\n"),
         });
+        if (this.state.PostTitle !== "" && this.state.PostBody !== "") {
+            document.querySelector('.send-post').style.opacity = "1";
+            this.setState({
+                SendPostBtnActive: true
+            })
+        }
     }
     // ##################################################################
     async deleteLastImage() {
@@ -127,17 +141,32 @@ class PostCreator extends Component {
     }
     //? ##################################################################
     render() {
+        let hiddenSendPostBtn
+        if (this.state.SendPostBtnActive) {
+            hiddenSendPostBtn = (
+                <div className="hidden hidden-post-send" onClick={this.handlePost}>
+                    send in postCreator
+                </div >
+            )
+        } else {
+            hiddenSendPostBtn = null
+        }
+
         return (
             <React.Fragment >
                 <div id="post-creator-container">
+                    <div className='post-creator-error-container'>
+                        Error To Send
+                    </div>
                     <div className="post-creator">
                         <div className="title-container">
                             <div className="title">
                                 <textarea
                                     name="PostTitle"
                                     id="creat-title"
-                                    cols="10"
+                                    cols="1"
                                     rows="1"
+                                    maxLength={48}
                                     placeholder="add a post title..."
                                     onChange={this.handleChange}
                                 ></textarea>
@@ -177,10 +206,9 @@ class PostCreator extends Component {
                             ></textarea>
                         </div>
                     </div>
-                    {/* for cicking in send on post creator componant i added this btn */}
-                    <div className="hidden hidden-post-send" onClick={this.handlePost}>
-                        send in postCreator
-                    </div >
+                    {hiddenSendPostBtn}
+                    <Link id="go-to-home-link" to="/home">
+                    </Link>
                 </div>
                 <div
                     className="hidden"
@@ -189,6 +217,9 @@ class PostCreator extends Component {
                     className="hidden"
                     id="image-id-to-delete2"
                 >
+                </div>
+                <div id="post-creator-overlay">
+
                 </div>
             </React.Fragment >
         )

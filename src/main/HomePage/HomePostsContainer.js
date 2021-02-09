@@ -15,16 +15,17 @@ class HomePostsContainer extends Component {
         this.getLastPostsAndCreatComponents = this.getLastPostsAndCreatComponents.bind(this)
     }
 
-
     // ##############################################################################
     async componentDidMount() {
+        document.querySelector('.menu-for-post-creation-background').style.display = 'none';
+        document.querySelector('.menu-home-background').style.display = 'flex';
         let LastPosts = await myGetFetcher("/Posts/get-last-posts");
         await this.setState({
             AllPostsArray: [...new Set([...LastPosts.allPosts])]
         })
-        // console.log(this.state.AllPostsArray)
         this.getLastPostsAndCreatComponents(this.state.AllPostsArray)
     }
+
     // ##############################################################################
     async getLastPostsAndCreatComponents(data) {
         let postComponent = [];
@@ -69,9 +70,30 @@ class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            PostImage: ""
         }
     }
+
+    componentDidMount() {
+        this.setState({
+            PostImage: this.props.PostImage
+        })
+    }
+
     render() {
+        let postImage;
+        if (this.props.PostImage !== "") {
+            postImage = (
+                <img
+                    onClick={this.handleComment}
+                    src={`image/${this.state.PostImage}`}
+                    alt={this.props.PostTitle}
+                    width="100%"
+                />
+            );
+        } else {
+            postImage = null;
+        }
         return (
             <Fragment>
 
@@ -85,21 +107,16 @@ class Post extends Component {
                             </div>
                         </div>
                         <div className="post-infos_container">
-                            <div className="post-title">
+                            <h4 className="post-title">
                                 {this.props.PostTitle}
-                            </div>
+                            </h4>
                             <div className="post-date">
                                 {this.props.PostDate}
                             </div>
                         </div>
                         <div className="post">
                             <div className="post-image">
-                                <img
-                                    onClick={this.handleComment}
-                                    src={`image/${this.props.PostImage}`}
-                                    alt={this.props.ostTitle}
-                                    width="100%"
-                                />
+                                {postImage}
                             </div>
                             <div className="post-body">
                                 {this.props.PostBody}
@@ -120,16 +137,16 @@ class Post extends Component {
                                     <img src={TopResponse} alt="top-response" />
                                     <div className="the-top-response">
                                         <div className="the-top-response-author-infos">
-                                            <div className="the-top-response-author">
+                                            <h2 className="the-top-response-author">
                                                 Pape M Ndiaye
-                                            </div>
+                                            </h2>
                                         </div>
-                                        <div className="the-top-response-body">
+                                        <p className="the-top-response-body">
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                             Repudiandae corrupti tempora, ducimus aperiam reprehenderit iusto
                                             sapiente numquam ipsa quas at sequi cumque voluptatum porro ad est eius?
                                             Aut labore molestias!
-                                        </div>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

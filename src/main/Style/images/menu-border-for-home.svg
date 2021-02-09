@@ -21,7 +21,4 @@
       <rect x="1.5" y="1.5" width="104" height="365" rx="52" fill="none"/>
     </g>
   </g>
-  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_123)">
-    <path id="Path_123-2" data-name="Path 123" d="M1920,1451.91v367.338" transform="translate(-1774 -1443.41)" fill="none" stroke="#f12222" stroke-linecap="round" stroke-width="3"/>
-  </g>
 </svg>

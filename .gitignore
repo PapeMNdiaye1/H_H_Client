@@ -4,11 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
-*.css
 # testing
 /coverage
 
 # production
+*.css
 /build
 
 # misc
@@ -18,6 +18,6 @@
 .env.test.local
 .env.production.local
 .eslintcache
-npm-debug.log*
+npm-debugs.log*
 yarn-debug.log*
 yarn-error.log*

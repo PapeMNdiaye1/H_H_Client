@@ -50,7 +50,8 @@ class App extends Component {
       return (
         <div id="home_page_container">
           <BrowserRouter>
-            <Redirect to={"/Home"} />
+            {/* <Redirect to={"/Home"} /> */}
+            <Redirect to={"/Creat-new-post"} />
             <Mune />
             <TopBar />
             <Switch>
@@ -129,7 +130,7 @@ export const Form = ({ type, name, onchange, maxLength, minLength }) => {
 };
 
 
-//? #####################################################################""
+//? #####################################################################
 
 class TopBar extends Component {
   constructor(props) {
@@ -146,6 +147,7 @@ class TopBar extends Component {
       </BrowserRouter>);
   }
 }
+
 
 class Mune extends Component {
   constructor(props) {
@@ -171,7 +173,6 @@ class Mune extends Component {
       <BrowserRouter>
         <div id="menu-container">
           <div className="menu-for-post-creation-background">
-
             <div className="menu-for-post-creation">
               <div className="go-to-profile-page">
               </div>

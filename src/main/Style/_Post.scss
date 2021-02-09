@@ -40,13 +40,15 @@
             align-items: stretch;
             .post-title {
                 position: absolute;
+                min-width: 25%;
+                max-width: 85%;
+                width:auto ;
+                left: 0;
                 height: 2em;
                 padding-left: 1em;
                 padding-top: 0.7em;
                 font-weight: 900;
                 color: var(--colorText);
-                width: 25%;
-                left: 0;
                 background-color: var(--colorWhite);
                 &::after {
                     content: "";
@@ -81,9 +83,12 @@
             @include cent();
             flex-wrap: wrap;
             .post-image {
+                overflow: hidden;
                 width: 100%;
+                  max-height:20em ;
                 @include cent();
-                padding: 0.5em;
+                // padding: 0.5em;
+                border: .3em var(--colorWhite) solid;
                 img {
                     background-color: aqua;
                 }
@@ -92,6 +97,8 @@
                 padding: 0.5em;
                 width: 100%;
                 min-height: 4em;
+                    word-break: break-word;
+      white-space: pre-wrap;
             }
         }
         // ###########################
