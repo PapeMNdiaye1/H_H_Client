@@ -31,15 +31,7 @@ class SignUp extends Component {
             [theFormName]: theFormValue.replace(/(\n)+/g, "\n"),
         });
     }
-    // ##################################################################
-    handleChange(e) {
-        const theFormName = e.target.name;
-        const theFormValue = e.target.value;
-        this.setState({
-            [theFormName]: theFormValue,
-        });
 
-    }
     // ##################################################################
     async deleteLastImage() {
         let imageName = document.querySelector(

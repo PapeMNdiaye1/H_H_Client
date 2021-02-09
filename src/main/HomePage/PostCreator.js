@@ -22,10 +22,12 @@ class PostCreator extends Component {
     // ##################################################################
     componentDidMount() {
         document.querySelector('.send-post').style.opacity = "";
-        document.querySelector('.menu-for-post-creation-background').style.display = 'flex';
-        document.querySelector('.menu-home-background').style.display = 'none';
-        document.querySelector('.post-creator-error-container').style.display = 'none';
         document.querySelector('#post-creator-overlay').style.display = "none";
+        document.querySelector('.post-creator-error-container').style.display = 'none';
+        // ###################
+        document.querySelector('.menu-home-background').style.display = 'none';
+        document.querySelector('.menu-user-profile-background').style.display = 'none';
+        document.querySelector('.menu-for-post-creation-background').style.display = 'flex';
     }
     // ##################################################################
     async handlePost() {
@@ -77,10 +79,15 @@ class PostCreator extends Component {
         this.setState({
             [theFormName]: theFormValue.replace(/(\n)+/g, "\n"),
         });
-        if (this.state.PostTitle !== "" && this.state.PostBody !== "") {
+        if (this.state.PostTitle.length > 4 && this.state.PostBody.length > 4) {
             document.querySelector('.send-post').style.opacity = "1";
             this.setState({
                 SendPostBtnActive: true
+            })
+        } else {
+            document.querySelector('.send-post').style.opacity = "";
+            this.setState({
+                SendPostBtnActive: false
             })
         }
     }
@@ -168,7 +175,9 @@ class PostCreator extends Component {
                                     rows="1"
                                     maxLength={48}
                                     placeholder="add a post title..."
+                                    wrap="hard"
                                     onChange={this.handleChange}
+
                                 ></textarea>
                             </div>
                         </div>
@@ -203,11 +212,14 @@ class PostCreator extends Component {
                                 rows="10"
                                 placeholder="add a post..."
                                 onChange={this.handleChange}
-                            ></textarea>
-                        </div>
+                            >
+                            </textarea>
+                                    </div>
                     </div>
                     {hiddenSendPostBtn}
                     <Link id="go-to-home-link" to="/home">
+                    </Link>
+                    <Link className="hidden" id="go-to-profile-link" to="/User-Profile">
                     </Link>
                 </div>
                 <div

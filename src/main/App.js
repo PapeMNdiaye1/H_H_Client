@@ -4,6 +4,7 @@ import Signup from "./UsersControllers/Signup";
 import Login from "./UsersControllers/Login";
 import HomePostsContainer from "./HomePage/HomePostsContainer";
 import PostCreator from "./HomePage/PostCreator";
+import UserProfile from "./UserInfo/UserProfile";
 import { myGetFetcher } from "./MyFetchers";
 import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
 
@@ -15,8 +16,8 @@ class App extends Component {
       Name: "Pape M Ndiaye",
       Email: "pmomar44@gmail.com",
       ProfilePicture: "nimp",
-      // IsUserLogin: false,
-      IsUserLogin: true,
+      IsUserLogin: false,
+      // IsUserLogin: true,
     };
     this.handleUserLogin = this.handleUserLogin.bind(this);
     this.findUserInfos = this.findUserInfos.bind(this);
@@ -50,11 +51,24 @@ class App extends Component {
       return (
         <div id="home_page_container">
           <BrowserRouter>
-            {/* <Redirect to={"/Home"} /> */}
-            <Redirect to={"/Creat-new-post"} />
+            {/* <Redirect to={"/User-Profile"} /> */}
+            {/* <Redirect to={"/Creat-new-post"} /> */}
+            <Redirect to={"/Home"} />
             <Mune />
             <TopBar />
             <Switch>
+              <Route
+                exact
+                path={"/User-Profile"}
+                render={(props) => (
+                  <UserProfile
+                    {...props}
+                    UserName={this.state.Name}
+                    UserId={this.state.Id}
+                    UserProfilePicture={this.state.ProfilePicture}
+                  />
+                )}
+              />
               <Route
                 exact
                 path={"/Creat-new-post"}
