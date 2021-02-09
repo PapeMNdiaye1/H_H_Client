@@ -4,7 +4,6 @@ import { myGetFetcher } from "../MyFetchers";
 import { Link } from "react-router-dom";
 
 
-
 class HomePostsContainer extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +13,6 @@ class HomePostsContainer extends Component {
         }
         this.getLastPostsAndCreatComponents = this.getLastPostsAndCreatComponents.bind(this)
     }
-
     // ##############################################################################
     async componentDidMount() {
         document.querySelector('.menu-for-post-creation-background').style.display = 'none';
@@ -50,8 +48,6 @@ class HomePostsContainer extends Component {
         console.log(this.state.AllPostComponents)
     }
 
-
-
     render() {
         return (
             <Fragment>
@@ -70,7 +66,8 @@ class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            PostImage: ""
+            PostImage: "",
+            PostBody: "",
         }
     }
 
@@ -78,6 +75,21 @@ class Post extends Component {
         this.setState({
             PostImage: this.props.PostImage
         })
+
+        if (this.props.PostBody.length > 113) {
+            this.setState({
+                PostBody: (
+                    <p>
+                        {this.props.PostBody.slice(0, 113) + "... "}
+                        {/* <samp onClick={this.sowAlldescription}>Ride-More</samp> */}
+                    </p>
+                ),
+            });
+        } else {
+            this.setState({
+                PostBody: <p>{this.props.PostBody}</p>,
+            });
+        }
     }
 
     render() {
@@ -96,7 +108,6 @@ class Post extends Component {
         }
         return (
             <Fragment>
-
                 <div className="post-container-for-positon">
                     <div className='the-post-container'>
                         <div className="post-author-container">
@@ -119,7 +130,7 @@ class Post extends Component {
                                 {postImage}
                             </div>
                             <div className="post-body">
-                                {this.props.PostBody}
+                                {this.state.PostBody}
                             </div>
                         </div>
                         <div className="post-options">
@@ -144,14 +155,15 @@ class Post extends Component {
                                         <p className="the-top-response-body">
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                             Repudiandae corrupti tempora, ducimus aperiam reprehenderit iusto
-                                            sapiente numquam ipsa quas at sequi cumque voluptatum porro ad est eius?
-                                            Aut labore molestias!
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {/* <div  >
+
+             </div> */}
                 </div>
             </Fragment>
         );
