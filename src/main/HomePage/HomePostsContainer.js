@@ -52,7 +52,9 @@ class HomePostsContainer extends Component {
         return (
             <Fragment>
                 <div id="home-posts-container">
-                    <Link id="go-to-creat-post-link" to="/Creat-new-post">
+                    <Link className="hidden" id="go-to-creat-post-link" to="/Creat-new-post">
+                    </Link>
+                    <Link className="hidden" id="go-to-profile-link" to="/User-Profile">
                     </Link>
                     {this.state.AllPostComponents}
                 </div>
@@ -106,13 +108,46 @@ class Post extends Component {
         } else {
             postImage = null;
         }
+
+
+        let theProfilePicture;
+        if (this.props.postAuthorPicture !== "") {
+            theProfilePicture = { backgroundImage: `url(image/${this.props.PostAuthorPicture})` };
+        } else {
+            theProfilePicture = { background: "#000" };
+        }
+
+        let ProfilePicture;
+        if (this.props.UserId === this.props.postAuthorId) {
+            ProfilePicture = (
+                <Link style={{ textDecoration: "none" }} to="/my-profile-page">
+                    <div
+                        style={theProfilePicture}
+                        className="post-author-picture"
+                    // id={`post_author_picture${this.props.postId}`}
+                    ></div>
+                </Link>
+            );
+        } else {
+            ProfilePicture = (
+                <Link style={{ textDecoration: "none" }} to="/profile-page">
+                    <div
+                        onClick={this.openProfilePage}
+                        style={theProfilePicture}
+                        id={`post_author_picture${this.props.postId}`}
+                        className="post-author-picture"
+                    ></div>
+                </Link>
+            );
+        }
+
         return (
+
             <Fragment>
                 <div className="post-container-for-positon">
                     <div className='the-post-container'>
                         <div className="post-author-container">
-                            <div className="post-author-picture">
-                            </div>
+                            {ProfilePicture}
                             <div>
                                 {this.props.PostAuthorName}
                             </div>

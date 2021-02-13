@@ -77,10 +77,15 @@ class PostCreator extends Component {
         this.setState({
             [theFormName]: theFormValue.replace(/(\n)+/g, "\n"),
         });
-        if (this.state.PostTitle !== "" && this.state.PostBody !== "") {
+        if (this.state.PostTitle.length > 4 && this.state.PostBody.length > 4) {
             document.querySelector('.send-post').style.opacity = "1";
             this.setState({
                 SendPostBtnActive: true
+            })
+        } else {
+            document.querySelector('.send-post').style.opacity = "";
+            this.setState({
+                SendPostBtnActive: false
             })
         }
     }
@@ -168,7 +173,9 @@ class PostCreator extends Component {
                                     rows="1"
                                     maxLength={48}
                                     placeholder="add a post title..."
+                                    wrap="hard"
                                     onChange={this.handleChange}
+
                                 ></textarea>
                             </div>
                         </div>

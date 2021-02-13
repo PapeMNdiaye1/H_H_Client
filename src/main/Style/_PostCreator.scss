@@ -3,14 +3,14 @@
     justify-content: center;
     align-items: center;
 }
-#post-creator-overlay{
+#post-creator-overlay {
     position: absolute;
     width: 100vw;
     height: 100vh;
     background: var(--colorX);
-    opacity: .5;
+    opacity: 0.5;
     @include cent();
-    display:none;
+    display: none;
 }
 #post-creator-container {
     position: absolute;
@@ -20,14 +20,14 @@
     overflow-y: scroll;
     padding-top: 5vh;
     padding-bottom: 10vh;
-    .post-creator-error-container{
+    .post-creator-error-container {
         width: 100vw;
         height: 2em;
         // background-color: salmon;
         font-size: 2em;
         color: var(--colorXX);
-        @include cent()
-        // display: none;
+        @include cent() // display: none;
+;
     }
     .post-creator {
         width: 65%;

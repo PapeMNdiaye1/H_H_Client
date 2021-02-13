@@ -29,6 +29,8 @@
                 border-radius: 0.3em;
                 margin-right: 1em;
                 margin-left: 1em;
+                background-position: center;
+                background-size: 100%;
             }
         }
         // ###########################
@@ -42,7 +44,7 @@
                 position: absolute;
                 min-width: 25%;
                 max-width: 85%;
-                width:auto ;
+                width: auto;
                 left: 0;
                 height: 2em;
                 padding-left: 1em;
@@ -85,10 +87,10 @@
             .post-image {
                 overflow: hidden;
                 width: 100%;
-                  max-height:20em ;
+                max-height: 20em;
                 @include cent();
                 // padding: 0.5em;
-                border: .3em var(--colorWhite) solid;
+                border: 0.3em var(--colorWhite) solid;
                 img {
                     background-color: aqua;
                 }
@@ -97,8 +99,8 @@
                 padding: 0.5em;
                 width: 100%;
                 min-height: 4em;
-                    word-break: break-word;
-      white-space: pre-wrap;
+                word-break: break-word;
+                white-space: pre-wrap;
             }
         }
         // ###########################
@@ -154,9 +156,8 @@
                         grid-column: 1;
                         grid-row: 1;
                         padding: 0.2em;
-                        font-size: .7em;
+                        font-size: 0.7em;
                         background: salmon;
-                       
                     }
                     .the-top-response-body {
                         // background-color: darkgoldenrod;

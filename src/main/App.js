@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import _get from 'lodash.get';
 import "./Style/style.css";
 import Signup from "./UsersControllers/Signup";
 import Login from "./UsersControllers/Login";
@@ -16,8 +17,8 @@ class App extends Component {
       Name: "Pape M Ndiaye",
       Email: "pmomar44@gmail.com",
       ProfilePicture: "nimp",
-      // IsUserLogin: false,
-      IsUserLogin: true,
+      IsUserLogin: false,
+      // IsUserLogin: true,
     };
     this.handleUserLogin = this.handleUserLogin.bind(this);
     this.findUserInfos = this.findUserInfos.bind(this);
@@ -34,11 +35,17 @@ class App extends Component {
   async handleUserLogin(childData) {
     console.log(childData);
     if (childData.TheUserIsLogin) {
-      this.setState({
-        IsUserLogin: childData.TheUserIsLogin,
-      });
       let userInfos = await this.findUserInfos(childData.Email);
-      console.log(userInfos.User);
+      if (_get(userInfos, "User._id") !== "") {
+        this.setState({
+          Id: _get(userInfos, "User._id"),
+          Name: _get(userInfos, "User.userName"),
+          Email: _get(userInfos, "User.email"),
+          ProfilePicture: _get(userInfos, "User.profilePicture"),
+          IsUserLogin: childData.TheUserIsLogin,
+        })
+      }
+      console.log(this.state);
     }
   }
   //? ####################################################
@@ -57,7 +64,7 @@ class App extends Component {
             <Mune />
             <TopBar />
             <Switch>
-              {/* <Route
+              <Route
                 exact
                 path={"/User-Profile"}
                 render={(props) => (
@@ -68,7 +75,7 @@ class App extends Component {
                     UserProfilePicture={this.state.ProfilePicture}
                   />
                 )}
-              /> */}
+              />
               <Route
                 exact
                 path={"/Creat-new-post"}
@@ -168,6 +175,7 @@ class Mune extends Component {
     super(props);
     this.sendPost = this.sendPost.bind(this)
     this.goToCreatPost = this.goToCreatPost.bind(this)
+    this.goToProfile = this.goToProfile.bind(this)
   }
 
   sendPost = () => {
@@ -181,6 +189,13 @@ class Mune extends Component {
       document.querySelector('.menu-home-background').style.display = 'none';
     }
   }
+  goToProfile = () => {
+    console.log("eee");
+    let link = document.querySelector('#go-to-profile-link')
+    if (link) {
+      link.click()
+    }
+  }
 
   render() {
     return (
@@ -188,7 +203,9 @@ class Mune extends Component {
         <div id="menu-container">
           <div className="menu-for-post-creation-background">
             <div className="menu-for-post-creation">
-              <div className="go-to-profile-page">
+              <div className="go-to-profile-page"
+
+              >
               </div>
               <div className="send-post"
                 onClick={this.sendPost}
@@ -200,7 +217,9 @@ class Mune extends Component {
 
           <div className='menu-home-background'>
             <div className="menu-container-for-home">
-              <div className="go-to-profile-page">
+              <div className="go-to-profile-page"
+                onClick={this.goToProfile}
+              >
               </div>
               <div className="go-to-creat-post"
                 onClick={this.goToCreatPost}
