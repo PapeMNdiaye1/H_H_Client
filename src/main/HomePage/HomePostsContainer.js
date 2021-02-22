@@ -4,7 +4,7 @@ import { myGetFetcher } from "../MyFetchers";
 import { Link } from "react-router-dom";
 
 
-class HomePostsContainer extends Component {
+export class HomePostsContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,8 +15,10 @@ class HomePostsContainer extends Component {
     }
     // ##############################################################################
     async componentDidMount() {
+        document.querySelector('.menu-user-profile-background ').style.display = 'none';
         document.querySelector('.menu-for-post-creation-background').style.display = 'none';
         document.querySelector('.menu-home-background').style.display = 'flex';
+
         let LastPosts = await myGetFetcher("/Posts/get-last-posts");
         await this.setState({
             AllPostsArray: [...new Set([...LastPosts.allPosts])]
@@ -31,6 +33,7 @@ class HomePostsContainer extends Component {
             console.log(post.postImage);
             postComponent.push(
                 <Post
+                    InHome={false}
                     key={post._id}
                     PostAuthorId={post.postAuthorId}
                     PostAuthorName={post.postAuthorName}
@@ -64,7 +67,7 @@ class HomePostsContainer extends Component {
 }
 
 
-class Post extends Component {
+export class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -142,7 +145,6 @@ class Post extends Component {
         }
 
         return (
-
             <Fragment>
                 <div className="post-container-for-positon">
                     <div className='the-post-container'>
@@ -169,36 +171,14 @@ class Post extends Component {
                             </div>
                         </div>
                         <div className="post-options">
-                            <div className="post-comment">
-                                <div className="creat-response-container">
-                                    <textarea
-                                        name="PostDescription"
-                                        id="creat-response"
-                                        cols="10"
-                                        rows="10"
-                                        placeholder="Your post..."
-                                    ></textarea>
-                                </div >
-                                <div className="top-response">
-                                    <img src={TopResponse} alt="top-response" />
-                                    <div className="the-top-response">
-                                        <div className="the-top-response-author-infos">
-                                            <h2 className="the-top-response-author">
-                                                Pape M Ndiaye
-                                            </h2>
-                                        </div>
-                                        <p className="the-top-response-body">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Repudiandae corrupti tempora, ducimus aperiam reprehenderit iusto
-                                        </p>
-                                    </div>
-                                </div>
+                            <div className="creat-response-container">
+                                Your post...
                             </div>
                         </div>
+                        <div className="top-response-container">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eos voluptates quisquam eum voluptatem quos, voluptatum quod similique eligendi error tenetur laboriosam magni veniam porro maiores ex aspernatur, neque animi?
+                       </div>
                     </div>
-                    {/* <div  >
-
-             </div> */}
                 </div>
             </Fragment>
         );
@@ -208,4 +188,3 @@ class Post extends Component {
 
 
 
-export default HomePostsContainer;

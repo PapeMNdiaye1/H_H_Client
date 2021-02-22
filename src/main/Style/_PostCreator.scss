@@ -61,6 +61,7 @@
                 }
                 textarea {
                     font-size: 1.5em;
+                      font-family: 'OCR';
                     &::-webkit-scrollbar {
                         display: none;
                     }
@@ -125,6 +126,7 @@
             display: block;
             white-space: pre-wrap;
             font-size: 1em;
+              font-family: 'OCR';
             background: var(--colorWhite);
             &:focus {
                 outline: 0;

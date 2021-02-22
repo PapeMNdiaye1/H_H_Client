@@ -3,7 +3,7 @@ import _get from 'lodash.get';
 import "./Style/style.css";
 import Signup from "./UsersControllers/Signup";
 import Login from "./UsersControllers/Login";
-import HomePostsContainer from "./HomePage/HomePostsContainer";
+import { HomePostsContainer } from "./HomePage/HomePostsContainer";
 import PostCreator from "./HomePage/PostCreator";
 import UserProfile from "./UserInfo/UserProfile";
 import { myGetFetcher } from "./MyFetchers";
@@ -17,8 +17,8 @@ class App extends Component {
       Name: "Pape M Ndiaye",
       Email: "pmomar44@gmail.com",
       ProfilePicture: "nimp",
-      IsUserLogin: false,
-      // IsUserLogin: true,
+      // IsUserLogin: false,
+      IsUserLogin: true,
     };
     this.handleUserLogin = this.handleUserLogin.bind(this);
     this.findUserInfos = this.findUserInfos.bind(this);
@@ -181,16 +181,14 @@ class Mune extends Component {
   sendPost = () => {
     document.querySelector('.hidden-post-send').click()
   }
+
   goToCreatPost = () => {
     let link = document.querySelector('#go-to-creat-post-link')
     if (link) {
       link.click()
-      document.querySelector('.menu-for-post-creation-background').style.display = 'flex';
-      document.querySelector('.menu-home-background').style.display = 'none';
     }
   }
   goToProfile = () => {
-    console.log("eee");
     let link = document.querySelector('#go-to-profile-link')
     if (link) {
       link.click()
@@ -204,17 +202,17 @@ class Mune extends Component {
           <div className="menu-for-post-creation-background">
             <div className="menu-for-post-creation">
               <div className="go-to-profile-page"
-
+                onClick={this.goToProfile}
               >
               </div>
               <div className="send-post"
                 onClick={this.sendPost}
               >
                 Send
-            </div >
+              </div >
             </div>
           </div>
-
+          {/* ############################################################"" */}
           <div className='menu-home-background'>
             <div className="menu-container-for-home">
               <div className="go-to-profile-page"
@@ -230,7 +228,24 @@ class Mune extends Component {
               </div >
             </div>
           </div>
+          {/* ############################################################"" */}
+          <div className="menu-user-profile-background">
+            <div className="menu-container-for-user">
+              <div className="go-to-profile-param"
 
+              >
+                ggg
+              </div>
+              <div className="go-to-creat-post"
+                onClick={this.goToCreatPost}
+              >
+              </div >
+              <div className="go-on-home"
+              >
+                ggg
+              </div >
+            </div>
+          </div>
         </div>
       </BrowserRouter>);
   }

@@ -6,6 +6,10 @@
   src: url(./Font/Iceland/Iceland-Regular.ttf);
   font-family: Iceland;
 }
+@font-face {
+  src: url(./Font/ocr-a/OCR-ABT.ttf);
+  font-family: OCR;
+}
 @mixin cent {
   display: flex;
   justify-content: center;
@@ -14,6 +18,7 @@
 body {
   --color0: #e4e4e4;
   --colorWhite: white;
+  --colorBlack: black;
   --colorX: #acacac;
   --colorXX: #f12222;
   --colorY: gray;
@@ -21,7 +26,7 @@ body {
   --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   background: var(--color0);
   overflow: hidden;
-  font-family: Ubuntu;
+  font-family: "OCR";
 }
 *,
 *::after,

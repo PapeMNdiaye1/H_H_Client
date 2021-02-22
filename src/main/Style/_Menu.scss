@@ -13,18 +13,19 @@
   @include cent();
   z-index: 1000;
   .menu-for-post-creation-background,
-  .menu-home-background{
+  .menu-home-background,
+  .menu-user-profile-background {
     position: absolute;
     width: 100%;
-   
     height: 100%;
     background-image: url(./images/menu-border-for-home.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-      @include cent();
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    @include cent();
     .menu-for-post-creation,
-    .menu-container-for-home {
+    .menu-container-for-home,
+    .menu-container-for-user {
       position: absolute;
       left: 6%;
       width: 70%;
@@ -40,43 +41,43 @@
         background-position: center;
         background-repeat: no-repeat;
         @include cent();
-        // background-size: 40%;
         &:hover {
           transform: scale(1.1);
         }
-        &:active{
-              transform: scale(1);
+        &:active {
+          transform: scale(1);
         }
       }
       .go-to-profile-page {
         background-image: url(./images/profile-icon.svg);
-          background-size: 45%;
-        // background: darkcyan;
+        background-size: 45%;
+      }
+      .go-to-creat-post {
+        background-image: url(./images/go-to-post-creator.svg);
       }
       .send-post {
         background-image: url(./images/min-border.svg);
-        // background: darkcyan;
         background-size: 70%;
         font-weight: 900;
-        opacity: .2;
-        //    &:hover{
-        //             transform: scale(1.1);
-        //         }
+        opacity: 0.2;
       }
     }
-    .menu-container-for-home {
+    .menu-container-for-home,
+    .menu-container-for-user {
       display: flex;
       height: 90%;
-      .go-to-creat-post{
-             background-image: url(./images/go-to-post-creator.svg);
+      .go-on-top {
+        background-image: url(./images/go-on-top.svg);
       }
-      .go-on-top{
-             background-image: url(./images/go-on-top.svg);
-      }
+    }
+    .menu-container-for-user {
     }
   }
-    .menu-for-post-creation-background{
-           background-image :url(./images/menu-border-for-post-creator.svg);
-          display: none;
-    }
+  .menu-for-post-creation-background {
+    background-image: url(./images/menu-border-for-post-creator.svg);
+    display: none;
+  }
+  .menu-user-profile-background {
+    display: none;
+  }
 }
