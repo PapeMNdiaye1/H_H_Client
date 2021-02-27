@@ -27,14 +27,12 @@
         left: 0;
         display: none;
       }
-
       .forms-container {
         width: 100%;
         height: 26em;
         @include cent;
         align-items: flex-start;
         flex-wrap: wrap;
-        // background: salmon;
         .container-for-profilePicture-container {
           width: 100%;
           height: auto;

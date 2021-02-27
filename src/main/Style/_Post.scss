@@ -70,7 +70,7 @@
                 width: auto;
                 font-weight: -100;
                 color: var(--colorXX);
-                font-family: Iceland;
+                // font-family: ;
                 font-weight: 200;
                 padding-right: 1em;
                 padding-top: 0.2em;
@@ -89,7 +89,6 @@
                 width: 100%;
                 max-height: 20em;
                 @include cent();
-                // padding: 0.5em;
                 border: 0.3em var(--colorWhite) solid;
                 img {
                     background-color: aqua;
@@ -101,6 +100,10 @@
                 min-height: 4em;
                 word-break: break-word;
                 white-space: pre-wrap;
+                a {
+                    text-decoration: none;
+                    color: var(--colorXX);
+                }
             }
         }
         // ###########################
@@ -108,7 +111,6 @@
             width: 100%;
             height: auto;
             .creat-response-container {
-                // position: absolute;
                 z-index: 7;
                 width: 38%;
                 height: 2em;
@@ -130,10 +132,40 @@
         // ###########################
         .top-response-container {
             width: 100%;
-            min-height: 5em;
+            min-height: 3em;
+            height: auto;
             margin-top: 0.5em;
-            // background: salmon;
             border: 0.1em var(--colorBlack) solid;
+            @include cent();
+            align-items: flex-start;
+            flex-wrap: wrap;
+            .top-response-author-info-container {
+                width: 20%;
+                height: 100%;
+                // background: saddlebrown;
+                @include cent();
+                flex-wrap: wrap;
+
+                .top-response-author-name {
+                    // background: seagreen;
+                    width: 100%;
+                    height: 50%;
+                    text-align: end;
+                    margin-right: 1em;
+                }
+                .top-response-date {
+                    width: 100%;
+                    height: 50%;
+                    // background: seagreen;
+                    text-align: center;
+                }
+            }
+            .top-response-body {
+                width: 80%;
+                height: 100%;
+
+                // background: sandybrown;
+            }
         }
     }
 }

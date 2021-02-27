@@ -169,7 +169,6 @@ class TopBar extends Component {
   }
 }
 
-
 class Mune extends Component {
   constructor(props) {
     super(props);
@@ -190,6 +189,12 @@ class Mune extends Component {
   }
   goToProfile = () => {
     let link = document.querySelector('#go-to-profile-link')
+    if (link) {
+      link.click()
+    }
+  }
+  goToHome = () => {
+    let link = document.querySelector('#go-to-home-link')
     if (link) {
       link.click()
     }
@@ -232,7 +237,6 @@ class Mune extends Component {
           <div className="menu-user-profile-background">
             <div className="menu-container-for-user">
               <div className="go-to-profile-param"
-
               >
                 ggg
               </div>
@@ -241,8 +245,9 @@ class Mune extends Component {
               >
               </div >
               <div className="go-on-home"
+                onClick={this.goToHome}
               >
-                ggg
+                home
               </div >
             </div>
           </div>
