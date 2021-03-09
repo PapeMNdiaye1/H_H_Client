@@ -155,7 +155,6 @@ export class Post extends Component {
 
         return (
             <Fragment>
-
                 <div className="post-container-for-positon">
                     <div className='the-post-container'>
                         <div className="post-author-container">
