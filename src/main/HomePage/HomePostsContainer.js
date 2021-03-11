@@ -10,23 +10,39 @@ export class HomePostsContainer extends Component {
         super(props);
         this.state = {
             AllPostsArray: [],
-            AllPostComponents: []
+            AllPostComponents: [],
+            ShowComments: false,
+            PostInfos:"",
         }
         this.getLastPostsAndCreatComponents = this.getLastPostsAndCreatComponents.bind(this)
+        this.openOnePost = this.openOnePost.bind(this);
+        this.closePost = this.closePost.bind(this);
+    }
+      // ##############################################################################
+    closePost(){
+          this.setState({
+      ShowComments: false
+    })
+    }
+    // ##############################################################################
+    openOnePost (childData) {
+    this.setState({
+      PostInfos: {...childData},
+      ShowComments: true
+    })
     }
     // ##############################################################################
     async componentDidMount() {
         document.querySelector('.menu-user-profile-background ').style.display = 'none';
         document.querySelector('.menu-for-post-creation-background').style.display = 'none';
         document.querySelector('.menu-home-background').style.display = 'flex';
-
+        
         let LastPosts = await myGetFetcher("/Posts/get-last-posts");
         await this.setState({
             AllPostsArray: [...new Set([...LastPosts.allPosts])]
         })
         this.getLastPostsAndCreatComponents(this.state.AllPostsArray)
     }
-
     // ##############################################################################
     async getLastPostsAndCreatComponents(data) {
         let postComponent = [];
@@ -35,6 +51,7 @@ export class HomePostsContainer extends Component {
             postComponent.push(
                 <Post
                     InHome={false}
+                    onOpenPost={this.openOnePost}
                     key={post._id}
                     Id={post._id}
                     PostAuthorId={post.postAuthorId}
@@ -46,17 +63,17 @@ export class HomePostsContainer extends Component {
                     PostBody={post.postBody}
                     PostDate={post.postDate}
                 />)
-        })
-        this.setState({
+            })
+            this.setState({
             AllPostComponents: postComponent
         })
         console.log(this.state.AllPostComponents)
     }
-
+    
     render() {
         return (
             <Fragment>
-                <Comments />
+                {this.state.ShowComments &&  <Comments ThePostInfos={this.state.PostInfos} onClosePost={this.closePost}/> }
                 <div id="home-posts-container">
                     <Link className="hidden" id="go-to-creat-post-link" to="/Creat-new-post">
                     </Link>
@@ -69,6 +86,8 @@ export class HomePostsContainer extends Component {
     }
 }
 
+// *##############################################################################
+// *##############################################################################
 
 export class Post extends Component {
     constructor(props) {
@@ -77,19 +96,42 @@ export class Post extends Component {
             PostImage: "",
             PostBody: "",
         }
+        this.openPost = this.openPost.bind(this)
     }
-
+  
+    // ##############################################################################
+    openPost(){
+        if (this.props.Id != "" &&
+            this.props.PostTitle != "" &&
+            this.props.PostBody != "" &&
+            this.props.PostDate != "" &&
+            this.props.PostAuthorName != "" &&
+            this.props.PostAuthorId != ""
+            ) {
+            this.props.onOpenPost({
+                Id : this.props.Id,
+                PostTitle :this.props.PostTitle,
+                PostBody : this.props.PostBody,
+                PostDate : this.props.PostDate,
+                PostAuthorName :this.props.PostAuthorName,
+                PostAuthorId: this.props.PostAuthorId,
+                PostAuthorPicture : this.props.PostAuthorPicture,
+                PostImage : this.props.PostImage,
+                PostImageId : this.props.PostImageId,
+            })
+        }
+    }
+    // ##############################################################################
     componentDidMount() {
         this.setState({
             PostImage: this.props.PostImage
         })
-
+        
         if (this.props.PostBody.length > 113) {
             this.setState({
                 PostBody: (
                     <p>
                         {this.props.PostBody.slice(0, 113) + "... "}
-                        {/* <samp onClick={this.sowAlldescription}>Ride-More</samp> */}
                     </p>
                 ),
             });
@@ -98,15 +140,9 @@ export class Post extends Component {
                 PostBody: <p>{this.props.PostBody}</p>,
             });
         }
-
         document.querySelector(`#id${this.props.Id}`).innerHTML = this.props.PostBody;
-        // console.log(this.props.PostBody);
-        // console.log("333333333333333333333");
-        // console.log(this.props.PostBody.slice(1));
-
-
     }
-
+    // ?##############################################################################
     render() {
         let postImage;
         if (this.props.PostImage !== "") {
@@ -118,8 +154,6 @@ export class Post extends Component {
                     width="100%"
                 />
             );
-        } else {
-            postImage = null;
         }
 
 
@@ -164,7 +198,7 @@ export class Post extends Component {
                             </div>
                         </div>
                         <div className="post-infos_container">
-                            <h4 className="post-title">
+                            <h4 className="post-title" onClick={this.openPost}>
                                 {this.props.PostTitle}
                             </h4>
                             <div className="post-date">
@@ -185,20 +219,22 @@ export class Post extends Component {
                         </div>
                         <div className="top-response-container">
                             <div className="top-response-author-info-container">
-                                <h4 className="top-response-author-name">
+                                <div className="top-response-author-profile-picture">
+                                    d
+                                </div>
+                                <h3 className="top-response-author-name">
                                     Pape M Ndiaye
-                                </h4>
-
-                                <h5 className="top-response-date">
+                                </h3>
+                                <time className="top-response-date">
                                     02-20-2021 19:51
-                                </h5>
+                                </time>
 
 
                             </div>
                             <div className="top-response-body">
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Facilis eos voluptates quisquam eum voluptatem quos, voluptatum quod similique eligendi error tenetur laboriosam magni veniam porro maiores ex aspernatur, neque animi?
-                                adipisicing elit. Facilis eos voluptates quisquam eum voluptatem quos, voluptatum quod similique eligendi error tenetur laboriosam magni veniam porro maiores ex aspernatur, neque animi?
+                             
                             </div>
                         </div>
                     </div>

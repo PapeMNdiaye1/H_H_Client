@@ -17,21 +17,20 @@ class App extends Component {
       Name: "Pape M Ndiaye",
       Email: "pmomar44@gmail.com",
       ProfilePicture: "nimp",
-      // IsUserLogin: false,
       IsUserLogin: true,
     };
     this.handleUserLogin = this.handleUserLogin.bind(this);
     this.findUserInfos = this.findUserInfos.bind(this);
     this.toggleToGetHome = this.toggleToGetHome.bind(this);
   }
-  //? ####################################################
+  // ####################################################
   async findUserInfos(UserEmail) {
     let UserInDb = await myGetFetcher(
       `/Users/get-user-infos/${UserEmail}`
     );
     return UserInDb;
   }
-  //? ####################################################
+  // ####################################################
   async handleUserLogin(childData) {
     console.log(childData);
     if (childData.TheUserIsLogin) {
@@ -48,7 +47,7 @@ class App extends Component {
       console.log(this.state);
     }
   }
-  //? ####################################################
+  // ####################################################
   async toggleToGetHome(childData) {
     console.log(childData);
   }
@@ -58,8 +57,6 @@ class App extends Component {
       return (
         <div id="home_page_container">
           <BrowserRouter>
-            {/* <Redirect to={"/User-Profile"} /> */}
-            {/* <Redirect to={"/Creat-new-post"} /> */}
             <Redirect to={"/Home"} />
             <Mune />
             <TopBar />
