@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import _get from 'lodash.get';
 import "./Style/style.css";
 import Signup from "./UsersControllers/Signup";
 import Login from "./UsersControllers/Login";
-import HomePostsContainer from "./HomePage/HomePostsContainer";
+import { HomePostsContainer } from "./HomePage/HomePostsContainer";
 import PostCreator from "./HomePage/PostCreator";
 import UserProfile from "./UserInfo/UserProfile";
 import { myGetFetcher } from "./MyFetchers";
@@ -34,11 +35,17 @@ class App extends Component {
   async handleUserLogin(childData) {
     console.log(childData);
     if (childData.TheUserIsLogin) {
-      this.setState({
-        IsUserLogin: childData.TheUserIsLogin,
-      });
       let userInfos = await this.findUserInfos(childData.Email);
-      console.log(userInfos.User);
+      if (_get(userInfos, "User._id") !== "") {
+        this.setState({
+          Id: _get(userInfos, "User._id"),
+          Name: _get(userInfos, "User.userName"),
+          Email: _get(userInfos, "User.email"),
+          ProfilePicture: _get(userInfos, "User.profilePicture"),
+          IsUserLogin: childData.TheUserIsLogin,
+        })
+      }
+      console.log(this.state);
     }
   }
   //? ####################################################
@@ -168,17 +175,23 @@ class Mune extends Component {
     super(props);
     this.sendPost = this.sendPost.bind(this)
     this.goToCreatPost = this.goToCreatPost.bind(this)
+    this.goToProfile = this.goToProfile.bind(this)
   }
 
   sendPost = () => {
     document.querySelector('.hidden-post-send').click()
   }
+
   goToCreatPost = () => {
     let link = document.querySelector('#go-to-creat-post-link')
     if (link) {
       link.click()
-      document.querySelector('.menu-for-post-creation-background').style.display = 'flex';
-      document.querySelector('.menu-home-background').style.display = 'none';
+    }
+  }
+  goToProfile = () => {
+    let link = document.querySelector('#go-to-profile-link')
+    if (link) {
+      link.click()
     }
   }
 
@@ -188,19 +201,23 @@ class Mune extends Component {
         <div id="menu-container">
           <div className="menu-for-post-creation-background">
             <div className="menu-for-post-creation">
-              <div className="go-to-profile-page">
+              <div className="go-to-profile-page"
+                onClick={this.goToProfile}
+              >
               </div>
               <div className="send-post"
                 onClick={this.sendPost}
               >
                 Send
-            </div >
+              </div >
             </div>
           </div>
-
+          {/* ############################################################"" */}
           <div className='menu-home-background'>
             <div className="menu-container-for-home">
-              <div className="go-to-profile-page">
+              <div className="go-to-profile-page"
+                onClick={this.goToProfile}
+              >
               </div>
               <div className="go-to-creat-post"
                 onClick={this.goToCreatPost}
@@ -211,7 +228,24 @@ class Mune extends Component {
               </div >
             </div>
           </div>
+          {/* ############################################################"" */}
+          <div className="menu-user-profile-background">
+            <div className="menu-container-for-user">
+              <div className="go-to-profile-param"
 
+              >
+                ggg
+              </div>
+              <div className="go-to-creat-post"
+                onClick={this.goToCreatPost}
+              >
+              </div >
+              <div className="go-on-home"
+              >
+                ggg
+              </div >
+            </div>
+          </div>
         </div>
       </BrowserRouter>);
   }

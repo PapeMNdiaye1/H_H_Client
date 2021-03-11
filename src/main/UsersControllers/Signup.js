@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import { myPostFetcher } from '../MyFetchers';
+import { myPostFetcher } from '../MyFetchers';
 import Compressor from 'compressorjs';
 import _get from 'lodash.get';
 // #############################
@@ -21,7 +21,63 @@ class SignUp extends Component {
         this.uploadImage = this.uploadImage.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.deleteLastImage = this.deleteLastImage.bind(this);
-        // this.handleSignUp = this.handleSignUp.bind(this);
+        this.handleSignUp = this.handleSignUp.bind(this);
+    }
+    // ##################################################################
+    async handleSignUp(e) {
+        e.preventDefault();
+        if (this.state.Name !== "" && this.state.Email !== "" &&
+            this.state.PasswordConfirmation === this.state.Password) {
+            let profilePicture = document.querySelector(
+                "#image-name"
+            ).innerHTML
+            let Data = {
+                Name: this.state.Name,
+                Email: this.state.Email,
+                Password: this.state.Password,
+                ProfilePicture: profilePicture,
+            };
+            let isUserLogin = await myPostFetcher("/Users/signUp", Data);
+            if (isUserLogin.UserSignUp) {
+                this.setState({
+                    TheUserIsLogin: true
+                })
+                console.log(isUserLogin.UserSignUp);
+                this.props.onUserLogin({ TheUserIsLogin: this.state.TheUserIsLogin, Email: this.state.Email })
+
+            }
+
+        }
+
+
+
+        // if (this.state.PasswordConfirmation === this.state.Password) {
+        //   document.querySelector(".signup_body_overlay").style.display = "flex";
+        //   let Data = {
+        //     Name: this.state.Name,
+        //     Email: this.state.Email,
+        //     Password: this.state.Password,
+        //     ProfilePicture: this.state.ProfilePicture,
+        //   };
+        //   let isUserLogin = await myFetcher("/User/signup", "post", Data);
+
+        //   if (isUserLogin === true) {
+        //     this.setState({
+        //       TheUserIsLogin: isUserLogin,
+        //     });
+        //     sessionStorage.setItem("Email", this.state.Email);
+        //     this.props.onUserLogin(this.state);
+        //   } else if (isUserLogin === "Email Already Exists") {
+        //     document.querySelector(".signup_body_overlay").style.display = "none";
+        //     this.validationBorder("1px red solid");
+        //     this.setState({
+        //       ErrorMessage: true,
+        //     });
+        //   }
+        // } else {
+        //   document.querySelectorAll(".forms")[2].style.border = "1px red solid";
+        //   document.querySelectorAll(".forms")[3].style.border = "1px red solid";
+        // }
     }
     // ##################################################################
     handleChange(e) {
@@ -31,7 +87,6 @@ class SignUp extends Component {
             [theFormName]: theFormValue.replace(/(\n)+/g, "\n"),
         });
     }
-
     // ##################################################################
     async deleteLastImage() {
         let imageName = document.querySelector(
@@ -112,10 +167,9 @@ class SignUp extends Component {
                             </form>
                             {/* the Forms */}
                             <form className="forms-container"
-                            // onSubmit={this.handleSignUp}
+                                onSubmit={this.handleSignUp}
                             >
                                 <div className="container-for-profilePicture-container">
-
                                     <div className="profilePicture-container" onClick={this.deleteLastImage}>
                                     </div>
                                 </div>

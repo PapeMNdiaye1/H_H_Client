@@ -1,28 +1,28 @@
 @mixin cent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-#user-profile-container{
+#user-profile-container {
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 91vh;
     overflow-y: scroll;
     // background: salmon;
-    background:var(--color0);
+    background: var(--color0);
     @include cent();
     align-items: flex-start;
-    .user-profile-infos-container{
+    .user-profile-infos-container {
         width: 100%;
         height: auto;
         // background-color: aquamarine;
         padding: 5em 0em 5em 5em;
-        .user-profile-infos{            
+        .user-profile-infos {
             width: 80%;
             min-height: 30em;
             height: auto;
-            border: .1em #000 solid;
+            border: 0.1em #000 solid;
             // background: salmon;
             // background-image: url('./images/user-profile-bg.svg');
             background-size: 100%;
@@ -30,11 +30,11 @@
             background-repeat: no-repeat;
             // @include cent();
             display: flex;
-            align-items:flex-start;
+            align-items: flex-start;
             // justify-content: flex-start;
             flex-wrap: wrap;
             // margin-bottom: 5em;
-            .profile-picture-and-name-container{
+            .profile-picture-and-name-container {
                 width: 100%;
                 height: auto;
                 // background: sandybrown;
@@ -42,38 +42,44 @@
                 @include cent();
                 justify-content: flex-start;
                 // background: saddlebrown;
-                .profile-picture{
+                .profile-picture {
                     width: 4em;
                     height: 4em;
                     margin-left: 1em;
                     border: 0.1em #000 solid;
                     border-radius: 0.3em;
                 }
-                .user-name{
+
+                .user-name {
                     margin-left: 1em;
                     font-size: 1.2em;
                 }
             }
-           .user-infos-container{
+            .user-infos-container {
                 // background: sandybrown;
                 width: 100%;
                 height: auto;
-                min-height:30em;
+                min-height: 30em;
                 display: grid;
-                grid-template-columns:  10fr 80%;
-                grid-template-rows: 
-                repeat(4 , )
-                4em
-                4em
-                4em
-                4em
-                10fr 
-                ;
-                .infos-title{
-                    background: sandybrown;
+                grid-template-columns: auto 1fr;
+                grid-template-rows: repeat(5, auto);
+                justify-items: center;
+                align-items: flex-start;
+                grid-row-gap: 0.5em;
+                padding-bottom: 2em;
+                .infos-title {
+                    justify-self: end;
+                    padding: 0em 0.5em 0.5em 1em;
+                    color: var(--colorXX);
                 }
-              
-           }
+
+                .infos-body {
+                    align-self: start;
+                    justify-self: start;
+                    overflow: hidden;
+                    padding: 0em 1em 0em 0em;
+                }
+            }
         }
     }
 }

@@ -18,6 +18,7 @@
 body {
   --color0: #e4e4e4;
   --colorWhite: white;
+  --colorBlack: black;
   --colorX: #acacac;
   --colorXX: #f12222;
   --colorY: gray;
@@ -25,7 +26,7 @@ body {
   --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   background: var(--color0);
   overflow: hidden;
-  font-family: 'OCR';
+  font-family: "OCR";
 }
 *,
 *::after,
