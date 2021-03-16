@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import TopResponse from '../Style/images/top-response.svg';
 import { myGetFetcher } from "../MyFetchers";
+import Comments from "./Comments";
 import { Link } from "react-router-dom";
 
 
@@ -35,6 +36,7 @@ export class HomePostsContainer extends Component {
                 <Post
                     InHome={false}
                     key={post._id}
+                    Id={post._id}
                     PostAuthorId={post.postAuthorId}
                     PostAuthorName={post.postAuthorName}
                     PostAuthorPicture={post.postAuthorPicture}
@@ -54,6 +56,7 @@ export class HomePostsContainer extends Component {
     render() {
         return (
             <Fragment>
+                <Comments />
                 <div id="home-posts-container">
                     <Link className="hidden" id="go-to-creat-post-link" to="/Creat-new-post">
                     </Link>
@@ -95,6 +98,13 @@ export class Post extends Component {
                 PostBody: <p>{this.props.PostBody}</p>,
             });
         }
+
+        document.querySelector(`#id${this.props.Id}`).innerHTML = this.props.PostBody;
+        // console.log(this.props.PostBody);
+        // console.log("333333333333333333333");
+        // console.log(this.props.PostBody.slice(1));
+
+
     }
 
     render() {
@@ -127,7 +137,6 @@ export class Post extends Component {
                     <div
                         style={theProfilePicture}
                         className="post-author-picture"
-                    // id={`post_author_picture${this.props.postId}`}
                     ></div>
                 </Link>
             );
@@ -166,8 +175,7 @@ export class Post extends Component {
                             <div className="post-image">
                                 {postImage}
                             </div>
-                            <div className="post-body">
-                                {this.state.PostBody}
+                            <div id={`id${this.props.Id}`} className="post-body">
                             </div>
                         </div>
                         <div className="post-options">
@@ -176,8 +184,23 @@ export class Post extends Component {
                             </div>
                         </div>
                         <div className="top-response-container">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eos voluptates quisquam eum voluptatem quos, voluptatum quod similique eligendi error tenetur laboriosam magni veniam porro maiores ex aspernatur, neque animi?
-                       </div>
+                            <div className="top-response-author-info-container">
+                                <h4 className="top-response-author-name">
+                                    Pape M Ndiaye
+                                </h4>
+
+                                <h5 className="top-response-date">
+                                    02-20-2021 19:51
+                                </h5>
+
+
+                            </div>
+                            <div className="top-response-body">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Facilis eos voluptates quisquam eum voluptatem quos, voluptatum quod similique eligendi error tenetur laboriosam magni veniam porro maiores ex aspernatur, neque animi?
+                                adipisicing elit. Facilis eos voluptates quisquam eum voluptatem quos, voluptatum quod similique eligendi error tenetur laboriosam magni veniam porro maiores ex aspernatur, neque animi?
+                            </div>
+                        </div>
                     </div>
                     {/* <div  >
 

@@ -11,7 +11,7 @@
   top: 50%;
   transform: translateY(-50%);
   @include cent();
-  z-index: 1000;
+  z-index: 99;
   .menu-for-post-creation-background,
   .menu-home-background,
   .menu-user-profile-background {

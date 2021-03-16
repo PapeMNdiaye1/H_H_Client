@@ -77,8 +77,11 @@ class PostCreator extends Component {
         const theFormName = e.target.name;
         const theFormValue = e.target.value.trim();
         this.setState({
-            [theFormName]: theFormValue.replace(/(\n)+/g, "\n"),
+            [theFormName]: theFormValue.replace(/(\n)+/g, "\n").replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/gm, (match) => {
+                return `<a href="${match}">${match}</a>`
+            })
         });
+
         if (this.state.PostTitle.length > 4 && this.state.PostBody.length > 4) {
             document.querySelector('.send-post').style.opacity = "1";
             this.setState({
@@ -90,6 +93,7 @@ class PostCreator extends Component {
                 SendPostBtnActive: false
             })
         }
+
     }
     // ##################################################################
     async deleteLastImage() {
@@ -214,7 +218,7 @@ class PostCreator extends Component {
                                 onChange={this.handleChange}
                             >
                             </textarea>
-                                    </div>
+                        </div>
                     </div>
                     {hiddenSendPostBtn}
                     <Link id="go-to-home-link" to="/home">

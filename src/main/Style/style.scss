@@ -1,12 +1,4 @@
 @font-face {
-  src: url(./Font/Ubuntu/Ubuntu-Regular.ttf);
-  font-family: Ubuntu;
-}
-@font-face {
-  src: url(./Font/Iceland/Iceland-Regular.ttf);
-  font-family: Iceland;
-}
-@font-face {
   src: url(./Font/ocr-a/OCR-ABT.ttf);
   font-family: OCR;
 }
@@ -52,6 +44,7 @@ body {
 }
 
 @import "./Signup";
+@import "./Comments";
 @import "./Login";
 @import "./HomePage";
 @import "./HomePostsContainer";
