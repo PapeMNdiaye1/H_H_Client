@@ -20,14 +20,36 @@
     overflow-y: scroll;
     padding-top: 5vh;
     padding-bottom: 10vh;
+    z-index: 9;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    .closePostCreator{
+        cursor: pointer;
+        @include cent();
+        position: absolute;
+        top: 1em;
+        left: 1em;
+        width: 2em;
+        height: 2em;
+            z-index: 4;
+            border-radius: 0.2em;
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('./images/close.svg');
+            &:hover{
+                transform: scale(1.1);
+            }
+            &:active{
+                transform: scale(1);
+            }
+
+    }
     .post-creator-error-container {
         width: 100vw;
         height: 2em;
-        // background-color: salmon;
         font-size: 2em;
         color: var(--colorXX);
-        @include cent() // display: none;
-;
+        @include cent();
     }
     .post-creator {
         width: 65%;
@@ -40,7 +62,6 @@
         .title-container {
             width: 100%;
             height: 3em;
-            // background: salmon;
             .title {
                 min-width: 10%;
                 width: auto;

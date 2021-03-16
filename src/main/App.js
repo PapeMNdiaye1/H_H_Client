@@ -17,21 +17,38 @@ class App extends Component {
       Name: "Pape M Ndiaye",
       Email: "pmomar44@gmail.com",
       ProfilePicture: "nimp",
-      // IsUserLogin: false,
       IsUserLogin: true,
+      // IsUserLogin: false,
+      ShowPostCreator: false,
     };
     this.handleUserLogin = this.handleUserLogin.bind(this);
     this.findUserInfos = this.findUserInfos.bind(this);
     this.toggleToGetHome = this.toggleToGetHome.bind(this);
+    this.openPostCreator = this.openPostCreator.bind(this);
+    this.closePostCreator = this.closePostCreator.bind(this);
   }
-  //? ####################################################
+  // ####################################################
+  async openPostCreator(childData) {
+    this.setState({
+      ShowPostCreator: true,
+    })
+    console.log('open Post Creator');
+  }
+  // ####################################################
+  async closePostCreator(childData) {
+    this.setState({
+      ShowPostCreator: false,
+    })
+    console.log('close Post Creator');
+  }
+  // ####################################################
   async findUserInfos(UserEmail) {
     let UserInDb = await myGetFetcher(
       `/Users/get-user-infos/${UserEmail}`
     );
     return UserInDb;
   }
-  //? ####################################################
+  // ####################################################
   async handleUserLogin(childData) {
     console.log(childData);
     if (childData.TheUserIsLogin) {
@@ -48,7 +65,7 @@ class App extends Component {
       console.log(this.state);
     }
   }
-  //? ####################################################
+  // ####################################################
   async toggleToGetHome(childData) {
     console.log(childData);
   }
@@ -58,11 +75,18 @@ class App extends Component {
       return (
         <div id="home_page_container">
           <BrowserRouter>
-            {/* <Redirect to={"/User-Profile"} /> */}
-            {/* <Redirect to={"/Creat-new-post"} /> */}
             <Redirect to={"/Home"} />
-            <Mune />
+            <Mune onOpenPostCreator={this.openPostCreator}
+              onClosePostCreator={this.closePostCreator}
+            />
             <TopBar />
+            {this.state.ShowPostCreator && <PostCreator
+              onClosePostCreator={this.closePostCreator}
+              onGetHome={this.toggleToGetHome}
+              UserName={this.state.Name}
+              UserId={this.state.Id}
+              UserProfilePicture={this.state.ProfilePicture}
+            />}
             <Switch>
               <Route
                 exact
@@ -70,19 +94,6 @@ class App extends Component {
                 render={(props) => (
                   <UserProfile
                     {...props}
-                    UserName={this.state.Name}
-                    UserId={this.state.Id}
-                    UserProfilePicture={this.state.ProfilePicture}
-                  />
-                )}
-              />
-              <Route
-                exact
-                path={"/Creat-new-post"}
-                render={(props) => (
-                  <PostCreator
-                    {...props}
-                    onGetHome={this.toggleToGetHome}
                     UserName={this.state.Name}
                     UserId={this.state.Id}
                     UserProfilePicture={this.state.ProfilePicture}
@@ -134,8 +145,8 @@ export const Form = ({ type, name, onchange, maxLength, minLength }) => {
       {name !== "PasswordConfirmation" ? (
         <label htmlFor={name}>{name}</label>
       ) : (
-          <label htmlFor={name}>Confirmation</label>
-        )}
+        <label htmlFor={name}>Confirmation</label>
+      )}
       <input
         required
         type={type}
@@ -182,18 +193,17 @@ class Mune extends Component {
   }
 
   goToCreatPost = () => {
-    let link = document.querySelector('#go-to-creat-post-link')
-    if (link) {
-      link.click()
-    }
+    this.props.onOpenPostCreator()
   }
   goToProfile = () => {
+    this.props.onClosePostCreator()
     let link = document.querySelector('#go-to-profile-link')
     if (link) {
       link.click()
     }
   }
   goToHome = () => {
+    this.props.onClosePostCreator()
     let link = document.querySelector('#go-to-home-link')
     if (link) {
       link.click()
@@ -238,7 +248,7 @@ class Mune extends Component {
             <div className="menu-container-for-user">
               <div className="go-to-profile-param"
               >
-                ggg
+                Param
               </div>
               <div className="go-to-creat-post"
                 onClick={this.goToCreatPost}
@@ -247,7 +257,6 @@ class Mune extends Component {
               <div className="go-on-home"
                 onClick={this.goToHome}
               >
-                home
               </div >
             </div>
           </div>

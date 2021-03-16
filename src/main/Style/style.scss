@@ -23,6 +23,8 @@ body {
 *,
 *::after,
 *::before {
+  color: var(--colorText);
+  font-weight: 100;
   margin: 0;
   padding: 0;
   position: relative;

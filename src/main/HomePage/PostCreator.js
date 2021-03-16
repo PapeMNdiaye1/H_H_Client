@@ -12,19 +12,24 @@ class PostCreator extends Component {
             PostBody: "",
             PostImage: '',
             PostId: "",
-            SendPostBtnActive: false,
+            SendPostBtnActive: false
         };
         this.uploadImage = this.uploadImage.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.deleteLastImage = this.deleteLastImage.bind(this);
         this.handlePost = this.handlePost.bind(this);
+        this.closePostCreator = this.closePostCreator.bind(this);
+    }
+    // ##################################################################
+    closePostCreator() {
+        this.props.onClosePostCreator()
     }
     // ##################################################################
     componentDidMount() {
         document.querySelector('.send-post').style.opacity = "";
         document.querySelector('#post-creator-overlay').style.display = "none";
         document.querySelector('.post-creator-error-container').style.display = 'none';
-        // ###################
+        // ##################################################################
         document.querySelector('.menu-home-background').style.display = 'none';
         document.querySelector('.menu-user-profile-background').style.display = 'none';
         document.querySelector('.menu-for-post-creation-background').style.display = 'flex';
@@ -49,7 +54,6 @@ class PostCreator extends Component {
                         .getHours()
                         .toString()
                         .padStart(2, "0")}:${dt.getMinutes().toString().padStart(2, "0")}`
-        // document.querySelector(".post_creation_container_overlay").style.display = "flex";
         let PostImageTitle = await document.querySelector("#image-name2").innerHTML;
         let PostImageId = await document.querySelector("#image-id-to-delete2").innerHTML;
         let Data = await {
@@ -63,7 +67,7 @@ class PostCreator extends Component {
             PostDate: Now,
             Timestamp: dt.getTime(),
         };
-        // #####################
+        // ##################################################################
         let response = await myPostFetcher("/Posts/creat-posts", Data)
         if (response.postIsCreated) {
             document.querySelector('#go-to-home-link').click()
@@ -72,7 +76,7 @@ class PostCreator extends Component {
             document.querySelector('.post-creator-error-container').style.display = 'flex';
         }
     }
-    // ##################################################################
+    // #################### ##############################################
     handleChange(e) {
         const theFormName = e.target.name;
         const theFormValue = e.target.value.trim();
@@ -81,7 +85,6 @@ class PostCreator extends Component {
                 return `<a href="${match}">${match}</a>`
             })
         });
-
         if (this.state.PostTitle.length > 4 && this.state.PostBody.length > 4) {
             document.querySelector('.send-post').style.opacity = "1";
             this.setState({
@@ -106,7 +109,6 @@ class PostCreator extends Component {
         let ProfilePictureToDelete = await document.querySelector(
             "#image-id-to-delete2"
         ).innerHTML
-
         if (ProfilePictureToDelete !== "") {
             fetch(`/files/${ProfilePictureToDelete}`, {
                 method: "delete",
@@ -162,10 +164,11 @@ class PostCreator extends Component {
         } else {
             hiddenSendPostBtn = null
         }
-
         return (
             <React.Fragment >
                 <div id="post-creator-container">
+                    <div className="closePostCreator" onClick={this.closePostCreator}>
+                    </div>
                     <div className='post-creator-error-container'>
                         Error To Send
                     </div>
@@ -181,7 +184,6 @@ class PostCreator extends Component {
                                     placeholder="add a post title..."
                                     wrap="hard"
                                     onChange={this.handleChange}
-
                                 ></textarea>
                             </div>
                         </div>
@@ -189,8 +191,7 @@ class PostCreator extends Component {
                             <form
                                 className="fileInput"
                                 method="post"
-                                encType="multipart/form-data"
-                            >
+                                encType="multipart/form-data" >
                                 <input
                                     type="file"
                                     id="hidden_file_input2"
@@ -206,7 +207,6 @@ class PostCreator extends Component {
                                     onClick={this.deleteLastImage}  >
                                 </div>
                             </div>
-
                         </div>
                         <div className="body-container">
                             <textarea

@@ -1,13 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { myGetFetcher } from "../MyFetchers";
 import { Post } from "../HomePage/HomePostsContainer";
-
-// import Compressor from 'compressorjs';
 import _get from 'lodash.get';
 import { Link } from "react-router-dom";
-// import { myPostFetcher } from '../MyFetchers'
-// import { Link } from "react-router-dom";
-
+//######################################################################################
 class UserProfile extends Component {
     constructor(props) {
         super(props)
@@ -49,8 +45,7 @@ class UserProfile extends Component {
                     PostImageId={post.postImageId}
                     PostTitle={post.postTitle}
                     PostBody={post.postBody}
-                    PostDate={post.postDate}
-          />
+                    PostDate={post.postDate}/>
       )
         })
         this.setState({
@@ -123,8 +118,8 @@ class UserProfile extends Component {
                 {this.state.AllMyPostsComponents}
                 </div>
                 </div>
-                <Link id="go-to-creat-post-link" to="/Creat-new-post">
-                </Link>
+                {/* <Link id="go-to-creat-post-link" to="/Creat-new-post">
+                </Link> */}
                 <Link id="go-to-home-link" to="/home">
                 </Link>
             </Fragment>

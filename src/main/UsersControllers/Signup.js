@@ -43,10 +43,11 @@ class SignUp extends Component {
                     TheUserIsLogin: true
                 })
                 console.log(isUserLogin.UserSignUp);
-                this.props.onUserLogin({ TheUserIsLogin: this.state.TheUserIsLogin, Email: this.state.Email })
-
+                this.props.onUserLogin({
+                    TheUserIsLogin: this.state.TheUserIsLogin,
+                    Email: this.state.Email
+                })
             }
-
         }
 
 
@@ -237,8 +238,8 @@ export const Form = ({ type, name, onchange, maxLength, minLength }) => {
             {name !== "PasswordConfirmation" ? (
                 <label htmlFor={name}>{name}</label>
             ) : (
-                    <label htmlFor={name}>Confirmation</label>
-                )}
+                <label htmlFor={name}>Confirmation</label>
+            )}
 
             <input
                 required
